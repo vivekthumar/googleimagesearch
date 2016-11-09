@@ -7,10 +7,9 @@ var DBManager = require('../database/db_manager'),
     fs = require('fs'),
     q = require('q'),
     Jimp = require("jimp"),
-    config = require('../config/config.js');
-
-const ImagesClient = require('google-images');
-let client = new ImagesClient(config.CSE_ID, config.API_KEY);
+    config = require('../config/config.js'),
+	ImagesClient = require('google-images'),
+	client = new ImagesClient(config.CSE_ID, config.API_KEY);
 
 exports.searchFromGoogle = function(req,res){
 	var imageName = (req.body.imageName).trim(),

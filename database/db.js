@@ -7,8 +7,11 @@ function openDB(ip, port, db_name, callback){
 	DB = new Db(db_name, server);
 	DB.open(function(err, db) {
 		if(!err && db){
-		 	console.log("Connected", db.databaseName, db.serverConfig.host, db.serverConfig.port);
-		 	callback(true);
+			db.authenticate('vivekthumar', 'password_9876', function(err, success) {
+        		console.log("Connected", db.databaseName, db.serverConfig.host, db.serverConfig.port);
+		 		callback(true);
+    		});
+		 	
 		}else{
 			console.log(err, db);
 		 	callback(false);
@@ -16,12 +19,14 @@ function openDB(ip, port, db_name, callback){
 	});
 };
 // server config
-var server_ip = 'localhost',
-	port = 27017,
-	db_name = 'googleImages';
+var server_ip = 'ds149207.mlab.com',
+	port = 49207,
+	db_name = 'googleimages';
 
 openDB(server_ip, port, db_name, function(flag){
 	if(flag == false){
 		console.log("Can't mongodb connection with DB Farm");
 	}
 });
+
+

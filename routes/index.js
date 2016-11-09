@@ -9,6 +9,10 @@ var DBManager = require('../database/db_manager'),
     Jimp = require("jimp"),
     config = require('../config/config.js');
 
+if (!fs.existsSync(approot+'/public/images')){
+    fs.mkdirSync(approot+'/public/images');
+}
+
 var ImagesClient = require('google-images');
 var client = new ImagesClient(config.CSE_ID, config.API_KEY);
 
